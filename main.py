@@ -40,14 +40,30 @@ class Solution(object):
         AB = collections.Counter(a + b for a in A for b in B)
         return sum(AB[-c - d] for c in C for d in D)
 
+    def maxArea(self, height: List[int]) -> int:
+        i, j = 0, len(height) - 1
+        water = (j - i) * min(height[i], height[j])
+
+        while i < j:
+            water = max(water, (j - i) * min(height[i], height[j]))
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+        return water
+
 
 if __name__ == '__main__':
     print("Running...")
-    print(Solution().productExceptSelf([1, 2, 3, 4]))
-    print(Solution().spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-    print(Solution().fourSumCount(
-        [0, 1, -1],
-        [-1, 1, 0],
-        [0, 0, 1],
-        [-1, 1, 1]
-    ))
+    # print(Solution().productExceptSelf([1, 2, 3, 4]))
+    # print(Solution().spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+    # print(Solution().fourSumCount(
+    #     [0, 1, -1],
+    #     [-1, 1, 0],
+    #     [0, 0, 1],
+    #     [-1, 1, 1]
+    # ))
+    # print(Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
+    # print(Solution().maxArea([1, 0, 0, 0, 0, 0, 0, 2, 2]))
+    assert Solution().maxArea([2, 3, 10, 5, 7, 8, 9]) == 36
+    assert Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
