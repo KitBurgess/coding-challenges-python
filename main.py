@@ -1,9 +1,4 @@
-from functools import reduce
 from typing import List
-
-
-def product(a) -> int:
-    return reduce(lambda x, y: x * y, a)
 
 
 # disabling these so that solutions can be copied into leetcode without needing to change method name etc.
