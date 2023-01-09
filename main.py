@@ -1,4 +1,9 @@
+from functools import reduce
 from typing import List
+
+
+def product(a) -> int:
+    return reduce(lambda x, y: x * y, a)
 
 
 # disabling these so that solutions can be copied into leetcode without needing to change method name etc.
@@ -35,8 +40,19 @@ class Solution(object):
 
         return spiral
 
+    def fourSumCount(self, A, B, C, D):
+        import collections
+        AB = collections.Counter(a + b for a in A for b in B)
+        return sum(AB[-c - d] for c in C for d in D)
+
 
 if __name__ == '__main__':
     print("Running...")
     print(Solution().productExceptSelf([1, 2, 3, 4]))
     print(Solution().spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+    print(Solution().fourSumCount(
+        [0, 1, -1],
+        [-1, 1, 0],
+        [0, 0, 1],
+        [-1, 1, 1]
+    ))
