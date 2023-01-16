@@ -73,6 +73,17 @@ class Solution(object):
         """
         return list(str(int(''.join(str(x) for x in digits)) + 1))
 
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        """
+        https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/546/
+        """
+        s = set(nums)
+        for i, n in enumerate(nums):
+            other = target - n
+            if other in s:
+                index = nums.index(other)
+                if index != i:
+                    return [i, index]
 
 
 if __name__ == '__main__':
@@ -91,4 +102,6 @@ if __name__ == '__main__':
     # assert Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
 
     # Solution().moveZeroes([0, 1, 0, 3, 12])
-    Solution().plusOne([1, 2, 3])
+    # Solution().plusOne([1, 2, 3])
+    # print(Solution().twoSum([3, 2, 4], 6))
+    print(Solution().twoSum([2, 7, 11, 15], 9))
