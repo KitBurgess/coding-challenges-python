@@ -52,6 +52,28 @@ class Solution(object):
                 j -= 1
         return water
 
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        firstPotentialZero = 0
+
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[firstPotentialZero], nums[i] = nums[i], nums[firstPotentialZero]
+                firstPotentialZero += 1
+
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums)) != len(nums)
+
+    def plusOne(self, digits: List[int]) -> List[int]:
+        """
+        https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/559/
+        """
+        return list(str(int(''.join(str(x) for x in digits)) + 1))
+
+
 
 if __name__ == '__main__':
     print("Running...")
@@ -65,5 +87,8 @@ if __name__ == '__main__':
     # ))
     # print(Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
     # print(Solution().maxArea([1, 0, 0, 0, 0, 0, 0, 2, 2]))
-    assert Solution().maxArea([2, 3, 10, 5, 7, 8, 9]) == 36
-    assert Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
+    # assert Solution().maxArea([2, 3, 10, 5, 7, 8, 9]) == 36
+    # assert Solution().maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
+
+    # Solution().moveZeroes([0, 1, 0, 3, 12])
+    Solution().plusOne([1, 2, 3])
